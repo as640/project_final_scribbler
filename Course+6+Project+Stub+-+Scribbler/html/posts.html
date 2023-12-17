@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffeedd; /* Background color */
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Container for all posts */
+        div {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        /* Style for each post card */
+        div > div {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            background-color: #fff;
+            width: 300px;
+        }
+
+        /* Author section */
+        div > div > div:first-child {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Post content section */
+        div > div > div:last-child {
+            margin-top: 10px;
+        }
+
+        /* Icons section */
+        div > div > div > span {
+            float: right;
+            cursor: pointer;
+        }
+
+        /* Delete icon style */
+        div > div > div > span.delete-icon {
+            color: #e74c3c;
+        }
+
+        /* Ellipsis icon style */
+        div > div > div > span.ellipsis-icon {
+            color: #3498db;
+        }
+
+        /* Modal style (hidden by default) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Style for the delete button inside the modal */
+        .delete-button {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Post Lists</h1>
+    </header>
+
+    <!-- list of all posts starts here -->
+    <div>
+
+        <!-- post 1 starts here -->
+        <div id="post1">
+            <div>
+                <p>Srishti Gupta</p>
+            </div>
+
+            <div>
+                <div>
+                    <p>‘let’ me be a ‘const’(ant), not a ‘var’(iable)!</p>
+                    <span class="fas fa-trash delete-icon" onclick="openDeleteModal(1)"></span>
+                </div>
+                <p>Since JavaScript does not have any type-checking, either of these keywords can be used to declare a variable of any type (datatype) in JavaScript. Though all the three keywords are used for the same purpose, they are different.</p>
+                <span class="fas fa-ellipsis-h ellipsis-icon"></span>
+            </div>
+        </div>
+        <!-- post 1 ends here -->
+
+        <!-- post 2 starts here -->
+        <div id="post2">
+            <div>
+                <p>Colby Fayock</p>
+            </div>
+
+            <div>
+                <div>
+                    <p>What is linting and how can it save you time?</p>
+                    <span class="fas fa-trash delete-icon" onclick="openDeleteModal(2)"></span>
+                </div>
+                <p>One of the biggest challenges in software development is time. It’s something we can’t easily get more of, but linting can help us make the most out of the time we have.</p>
+                <span class="fas fa-ellipsis-h ellipsis-icon"></span>
+            </div>
+        </div>
+        <!-- post 2 ends here -->
+
+        <!-- post 3 starts here -->
+        <div id="post3">
+            <div>
+                <p>Yazeed Bzadough</p>
+            </div>
+
+            <div>
+                <div>
+                    <p>How to Get More Views on Your Tech Blog</p>
+                    <span class="fas fa-trash delete-icon" onclick="openDeleteModal(3)"></span>
+                </div>
+                <p>If you're a developer with a Twitter account, you've already seen everyone and their cat start a blog, YouTube channel, or Patreon. We all want to become stars, or at the very least, a recognizable name in the industry.</p>
+                <span class="fas fa-ellipsis-h ellipsis-icon"></span>
+            </div>
+        </div>
+        <!-- post 3 ends here -->
+
+        <!-- post 4 starts here -->
+        <div id="post4">
+            <div>
+                <p>Cedd Burge</p>
+            </div>
+
+            <div>
+                <div>
+                    <p>How to write easily describable code</p>
+                    <span class="fas fa-trash delete-icon" onclick="openDeleteModal(4)"></span>
+                </div>
+                <p>When code is not describable using words, most people have to do some mental mapping to turn it into words. This wastes mental energy, and you run the risk of getting the mapping wrong. Different people will map to different words, which
+                    leads to confusion when discussing the code.</p>
+                <span class="fas fa-ellipsis-h ellipsis-icon"></span>
+            </div>
+        </div>
+        <!-- post 4 ends here -->
+
+        <!-- post 5 starts here -->
+        <div id="post5">
+            <div>
+                <p>Srishti Gupta</p>
+            </div>
+
+            <div>
+                <div>
+                    <p>Everything you should know about ‘module’ & ‘require’ in Node.js</p>
+                    <span class="fas fa-trash delete-icon" onclick="openDeleteModal(5)"></span>
+                </div>
+                <p>Node.js treats each JavaScript file as a separate module. For instance, if you have a file containing some code and this file is named xyz.js, then this file is treated as a module in Node, and you can say that you’ve created a module
+                    named xyz.</p>
+                <span class="fas fa-ellipsis-h ellipsis-icon"></span>
+            </div>
+        </div>
+        <!-- post 5 ends here -->
+
+        <!-- TODO: Write code for delete post modal here -->
+        <div id="deletePostModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDeleteModal()">&times;</span>
+                <p>Are you sure you want to delete this post?</p>
+                <button class="delete-button" onclick="deletePost()">Delete</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- list of all posts ends here -->
+
+    <script>
+        var currentPostId; // Variable to store the current post ID
+
+        // Function to open the delete post modal
+        function openDeleteModal(postId) {
+            document.getElementById('deletePostModal').style.display = 'block';
+            currentPostId = postId; // Save the current post ID for deletion
+        }
+
+        // Function to close the delete post modal
+        function closeDeleteModal() {
+            document.getElementById('deletePostModal').style.display = 'none';
+        }
+
+        // Function to handle post deletion
+        function deletePost() {
+            // Get the post element by ID
+            var postElement = document.getElementById('post' + currentPostId);
+
+            // Check if the post element exists
+            if (postElement) {
+                // Remove the post element from the DOM
+                postElement.remove();
+                alert('Post deleted!');
+                closeDeleteModal();
+            }
+        }
+    </script>
+</body>
+
+</html>

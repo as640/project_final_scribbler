@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff5e1; /* Cream background color */
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Container for create post form */
+        div.container {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style for input boxes */
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style for save and edit buttons */
+        button {
+            background-color: #ff6b6b; /* Pink button color */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for add comments button */
+        button.comment-button {
+            margin-top: 20px;
+            background-color: #3498db;
+        }
+
+        /* Style for comments section */
+        div.comments {
+            margin-top: 20px;
+        }
+
+        /* Style for individual comment */
+        div.comment {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for comment input box */
+        input.comment-input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style for add comment button */
+        button.add-comment-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Create Post</h1>
+    </header>
+
+    <!-- Create Post Form -->
+    <div class="container">
+        <!-- Title input box -->
+        <input type="text" id="postTitle" placeholder="Enter the title of your blog">
+
+        <!-- Content input box -->
+        <input type="text" id="postContent" placeholder="Enter the content of your blog" style="height: 150px;">
+
+        <!-- Save button -->
+        <button id="saveButton" onclick="savePost()">Save</button>
+
+        <!-- Edit button (initially hidden) -->
+        <button id="editButton" style="display: none;" onclick="editPost()">Edit</button>
+
+        <!-- Comments section -->
+        <div class="comments">
+            <h2>Comments</h2>
+
+            <!-- Comment input box -->
+            <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment">
+
+            <!-- Add comment button -->
+            <button class="add-comment-button" onclick="addComment()">Add Comment</button>
+
+            <!-- Individual comment -->
+            <div class="comment">
+                <p>Comment 1: This is a great blog!</p>
+            </div>
+
+            <!-- Individual comment -->
+            <div class="comment">
+                <p>Comment 2: I enjoyed reading this.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to save the blog post
+        function savePost() {
+            // Get title and content from input boxes
+            var title = document.getElementById('postTitle').value;
+            var content = document.getElementById('postContent').value;
+
+            // Check if both title and content are provided
+            if (title && content) {
+                alert('Blog post saved!');
+                // Hide save button, show edit button
+                document.getElementById('saveButton').style.display = 'none';
+                document.getElementById('editButton').style.display = 'inline-block';
+            } else {
+                alert('Please provide both title and content before saving.');
+            }
+        }
+
+        // Function to edit the blog post
+        function editPost() {
+            // Enable input boxes for editing
+            document.getElementById('postTitle').disabled = false;
+            document.getElementById('postContent').disabled = false;
+
+            // Hide edit button, show save button
+            document.getElementById('editButton').style.display = 'none';
+            document.getElementById('saveButton').style.display = 'inline-block';
+        }
+
+        // Function to add a comment
+        function addComment() {
+            // Get comment text from input box
+            var commentText = document.getElementById('commentInput').value;
+
+            // Check if the comment text is provided
+            if (commentText) {
+                // Create a new comment element
+                var commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = '<p>' + commentText + '</p>';
+
+                // Insert the comment at the beginning of the comments section
+                var commentsSection = document.querySelector('.comments');
+                commentsSection.insertBefore(commentElement, commentsSection.firstChild);
+
+                // Clear the comment input box
+                document.getElementById('commentInput').value = '';
+            } else {
+                alert('Please enter a comment before adding.');
+            }
+        }
+    </script>
+</body>
+
+</html>

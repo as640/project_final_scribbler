@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montez&display=swap" rel="stylesheet">
+    <title>Scribbler - Home</title>
+    <style>
+        body {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            text-align: left;
+            padding: 20px;
+            position: relative;
+        }
+
+        header h1 {
+            color: #3498db;
+            font-family: 'Montez', cursive;
+            font-size: 40px;
+            display: inline-block;
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        section {
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff; /* Change background color if needed */
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Scribbler</h1>
+        <div class="top-right-buttons">
+            <a href="#" class="btn" onclick="openLoginModal()">Login</a>
+            <a href="#" class="btn" onclick="openSignUpModal()">Sign Up</a>
+        </div>
+    </header>
+
+    <section>
+        <a href="html/create-post.html" class="btn">Create Post</a>
+        <a href="html/posts.html" class="btn">Post Lists</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Scribbler</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-container">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="modal-container">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignUpModal()">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function openSignUpModal() {
+            document.getElementById('signUpModal').style.display = 'block';
+        }
+
+        function closeSignUpModal() {
+            document.getElementById('signUpModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
